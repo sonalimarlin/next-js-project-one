@@ -34,11 +34,12 @@ export default function HomePage(props) {
 /*
 Static server-side rendering of the page.
 */
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const featuredEvents = await getFeaturedEvents();
   return {
     props: {
       events: featuredEvents,
     },
+    revalidate: 1800
   };
 }
